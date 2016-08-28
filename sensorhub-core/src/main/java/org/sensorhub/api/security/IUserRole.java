@@ -14,21 +14,22 @@ Copyright (C) 2012-2016 Sensia Software LLC. All Rights Reserved.
 
 package org.sensorhub.api.security;
 
-import java.util.Map;
+import java.util.Collection;
 
 
 /**
  * <p>
- * Common interface for all authorization providers allowing to check 
- * permissions for a given user
+ * Roles are sets of allowed and denied permissions that are associated to users
  * </p>
  *
- * @author Alex Robin <alex.robin@sensiasoftware.com>
- * @since Feb 23, 2016
+ * @author Alex Robin
+ * @since Aug 22, 2016
  */
-public interface IAuthorizer
-{
-    public boolean hasPermission(IUser user, IPermissionPath request);
+public interface IUserRole
+{    
+    public String getName();    
     
-    public boolean hasPermission(IUser user, IPermissionPath request, Map<IPermission, Object>... params);
+    public Collection<IPermissionPath> getAllowList();
+    
+    public Collection<IPermissionPath> getDenyList();
 }

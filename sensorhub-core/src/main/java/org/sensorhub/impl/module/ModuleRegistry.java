@@ -366,6 +366,10 @@ public class ModuleRegistry implements IModuleManager<IModule<?>>, IEventProduce
                     {
                         module.requestInit(force);
                     }
+                    catch (SecurityException e)
+                    {
+                        log.error(e.getMessage());
+                    }
                     catch (Exception e)
                     {
                         // just log simple message here; exception is already logged by module
@@ -452,6 +456,10 @@ public class ModuleRegistry implements IModuleManager<IModule<?>>, IEventProduce
                     {
                         if (!module.isInitialized())
                             module.requestInit(false);
+                    }
+                    catch (SecurityException e)
+                    {
+                        log.error(e.getMessage());
                     }
                     catch (Exception e)
                     {

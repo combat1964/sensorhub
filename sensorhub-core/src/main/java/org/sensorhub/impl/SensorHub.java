@@ -19,6 +19,7 @@ import org.sensorhub.api.config.IGlobalConfig;
 import org.sensorhub.api.module.IModuleConfigRepository;
 import org.sensorhub.api.persistence.IPersistenceManager;
 import org.sensorhub.api.processing.IProcessingManager;
+import org.sensorhub.api.security.ISecurityManager;
 import org.sensorhub.api.sensor.ISensorManager;
 import org.sensorhub.impl.comm.NetworkManagerImpl;
 import org.sensorhub.impl.common.EventBus;
@@ -28,6 +29,7 @@ import org.sensorhub.impl.module.ModuleRegistry;
 import org.sensorhub.impl.persistence.PersistenceManagerImpl;
 import org.sensorhub.impl.processing.ProcessingManagerImpl;
 import org.sensorhub.impl.security.ClientAuth;
+import org.sensorhub.impl.security.SecurityManagerImpl;
 import org.sensorhub.impl.sensor.SensorManagerImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -213,6 +215,12 @@ public class SensorHub
     public IProcessingManager getProcessingManager()
     {
         return new ProcessingManagerImpl(registry);
+    }
+    
+    
+    public ISecurityManager getSecurityManager()
+    {
+        return new SecurityManagerImpl();
     }
     
     

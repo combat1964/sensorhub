@@ -12,23 +12,31 @@ Copyright (C) 2012-2016 Sensia Software LLC. All Rights Reserved.
  
 ******************************* END LICENSE BLOCK ***************************/
 
-package org.sensorhub.api.security;
+package org.sensorhub.impl.security;
 
-import java.util.Map;
+import org.sensorhub.api.security.IPermission;
 
 
 /**
  * <p>
- * Common interface for all authorization providers allowing to check 
- * permissions for a given user
+ * Basic named permission used to build hierarchical permission sets 
  * </p>
  *
- * @author Alex Robin <alex.robin@sensiasoftware.com>
- * @since Feb 23, 2016
+ * @author Alex Robin
+ * @since Aug 22, 2016
  */
-public interface IAuthorizer
+public class ItemPermission extends AbstractPermission
 {
-    public boolean hasPermission(IUser user, IPermissionPath request);
+
+    public ItemPermission(IPermission parent, String name)
+    {
+        super(parent, name, null);
+    }
     
-    public boolean hasPermission(IUser user, IPermissionPath request, Map<IPermission, Object>... params);
+    
+    public ItemPermission(IPermission parent, String name, String errorMsg)
+    {
+        super(parent, name, errorMsg);
+    }
+    
 }

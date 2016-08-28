@@ -12,23 +12,24 @@ Copyright (C) 2012-2016 Sensia Software LLC. All Rights Reserved.
  
 ******************************* END LICENSE BLOCK ***************************/
 
-package org.sensorhub.api.security;
-
-import java.util.Map;
+package org.sensorhub.impl.security;
 
 
 /**
  * <p>
- * Common interface for all authorization providers allowing to check 
- * permissions for a given user
+ * Permission for filtering access to a specific geographic bounding region
+ * of a dataset
  * </p>
  *
- * @author Alex Robin <alex.robin@sensiasoftware.com>
- * @since Feb 23, 2016
+ * @author Alex Robin
+ * @since Aug 22, 2016
  */
-public interface IAuthorizer
+public class BboxPermission extends AbstractPermission
 {
-    public boolean hasPermission(IUser user, IPermissionPath request);
-    
-    public boolean hasPermission(IUser user, IPermissionPath request, Map<IPermission, Object>... params);
+
+    protected BboxPermission(AbstractPermission parent)
+    {
+        super(parent, "BBOX", "Unallowed access to geographical region ");
+    }
+
 }

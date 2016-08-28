@@ -14,21 +14,10 @@ Copyright (C) 2012-2016 Sensia Software LLC. All Rights Reserved.
 
 package org.sensorhub.api.security;
 
-import java.util.Map;
+import java.util.Collection;
 
 
-/**
- * <p>
- * Common interface for all authorization providers allowing to check 
- * permissions for a given user
- * </p>
- *
- * @author Alex Robin <alex.robin@sensiasoftware.com>
- * @since Feb 23, 2016
- */
-public interface IAuthorizer
+public interface IPermissionPath extends Collection<IPermission>
 {
-    public boolean hasPermission(IUser user, IPermissionPath request);
-    
-    public boolean hasPermission(IUser user, IPermissionPath request, Map<IPermission, Object>... params);
+    public boolean implies(IPermissionPath permList);
 }

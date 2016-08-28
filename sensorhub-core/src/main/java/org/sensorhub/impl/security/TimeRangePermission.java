@@ -12,19 +12,23 @@ Copyright (C) 2012-2016 Sensia Software LLC. All Rights Reserved.
  
 ******************************* END LICENSE BLOCK ***************************/
 
-package org.sensorhub.api.security;
+package org.sensorhub.impl.security;
 
 
 /**
  * <p>
- * Base interface for objects representing subjects (e.g. users) in the
- * security API
+ * Permission for filtering access to a specific time range of a dataset
  * </p>
  *
- * @author Alex Robin <alex.robin@sensiasoftware.com>
- * @since Feb 23, 2016
+ * @author Alex Robin
+ * @since Aug 22, 2016
  */
-public interface ISubject
+public class TimeRangePermission extends AbstractPermission
 {
-    public String getId();
+
+    protected TimeRangePermission(AbstractPermission parent)
+    {
+        super(parent, "TIME", "Unallowed access to time extent ");
+    }
+
 }
